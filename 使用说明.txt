@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宠物寄养平台 - 用户端</title>
+  <script type="module" crossorigin src="./assets/index-3f753b86.js"></script>
+  <link rel="stylesheet" href="./assets/index-40b9e567.css">
+</head>
+<body>
+  <div id="app"></div>
+  
+</body>
+</html>

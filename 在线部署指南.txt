@@ -1,0 +1,72 @@
+@echo off
+chcp 65001 >nul
+title 宠物寄养平台 - 用户端演示
+
+cls
+echo.
+echo ========================================
+echo   🐾 宠物寄养平台 - 用户端演示
+echo ========================================
+echo.
+echo 正在启动本地服务器...
+echo.
+
+cd /d "%~dp0"
+
+:: 检查Python
+python --version >nul 2>&1
+if %errorlevel% equ 0 (
+    echo ✅ 使用 Python 启动服务器
+    echo.
+    echo 📱 请在浏览器中访问: http://localhost:8000
+    echo.
+    echo 💡 提示：浏览器会在2秒后自动打开
+    echo 🛑 按 Ctrl+C 可以停止服务器
+    echo ========================================
+    echo.
+
+    :: 2秒后自动打开浏览器
+    start "" cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:8000"
+
+    python -m http.server 8000
+    goto :end
+)
+
+:: 检查Node.js
+node --version >nul 2>&1
+if %errorlevel% equ 0 (
+    echo ✅ 使用 Node.js 启动服务器
+    echo.
+    echo 📱 请在浏览器中访问: http://localhost:3000
+    echo.
+    echo 💡 提示：浏览器会在2秒后自动打开
+    echo 🛑 按 Ctrl+C 可以停止服务器
+    echo ========================================
+    echo.
+
+    :: 2秒后自动打开浏览器
+    start "" cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:3000"
+
+    npx -y serve -l 3000
+    goto :end
+)
+
+:: 都没有安装
+echo ❌ 未检测到 Python 或 Node.js
+echo.
+echo 请选择以下方式之一：
+echo.
+echo 方式1：安装 Python（推荐）
+echo   下载地址: https://www.python.org/downloads/
+echo   安装时勾选 "Add Python to PATH"
+echo.
+echo 方式2：安装 Node.js
+echo   下载地址: https://nodejs.org/
+echo.
+echo 方式3：在线部署（无需安装）
+echo   参考 "在线部署指南.txt"
+echo.
+pause
+goto :end
+
+:end
